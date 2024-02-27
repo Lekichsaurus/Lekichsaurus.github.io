@@ -14,7 +14,6 @@ getWeather = () => {
   const errorDiv = document.getElementById("error");
 
   const url = `http://api.openweathermap.org/data/2.5/weather?q=${inputValue},CRO&APPID=21b14aefd2b979687909f9afa337dd47&units=metric`;
-  console.log(url);
 
   fetch(url)
     .then((response) => {
@@ -36,9 +35,7 @@ getWeather = () => {
     });
 
   async function logWeather() {
-    const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${inputValue}&APPID=21b14aefd2b979687909f9afa337dd47&units=metric`
-    );
+    const response = await fetch(url);
     const info = await response.json();
 
     var name = info.name;
@@ -68,7 +65,7 @@ getWeather = () => {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }).addTo(map);
     } else {
-      map.setView([latitude, longitude], 14);
+      map.setView([latitude, longitude], 13);
     }
 
     const marker = L.marker([latitude, longitude]).addTo(map).openPopup();
