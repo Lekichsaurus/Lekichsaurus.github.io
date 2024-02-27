@@ -14,6 +14,7 @@ getWeather = () => {
   const errorDiv = document.getElementById("error");
 
   const url = `http://api.openweathermap.org/data/2.5/weather?q=${inputValue},CRO&APPID=21b14aefd2b979687909f9afa337dd47&units=metric`;
+  console.log(url);
 
   fetch(url)
     .then((response) => {

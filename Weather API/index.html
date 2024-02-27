@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
 
@@ -15,65 +16,6 @@
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""></script>
-
-    <style>
-      body {
-        background-image: linear-gradient(to bottom, rgba(163, 221, 255, 0.719), rgba(233, 247, 255, 0.03)),
-          url(https://static.vecteezy.com/system/resources/previews/016/088/358/non_2x/cloud-weather-forecast-seamless-pattern-background-wallpaper-illustration-vector.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-      div {
-        width: 100%;
-        font-size: 3rem;
-        text-align: center;
-        margin: 20px 0;
-        color: rgb(1, 1, 60);
-      }
-      div:first-of-type {
-        height: 10%;
-        margin: 20px 0;
-      }
-
-      input,
-      button {
-        font-size: 1.2rem;
-        padding: 10px;
-        border-radius: 5px;
-        border: none;
-        outline: 1px solid gray;
-        background-color: rgb(222, 243, 1);
-        color: rgb(1, 1, 60);
-        transition: 0.3s;
-      }
-
-      input {
-        width: 40%;
-      }
-
-      ::placeholder {
-        color: rgb(1, 1, 60);
-        opacity: 0.5;
-      }
-
-      button {
-        height: 100%;
-      }
-
-      button:hover {
-        cursor: pointer;
-        transform: scale(0.98);
-      }
-
-      #map {
-        height: 60vh;
-      }
-
-      .mainPart {
-        display: flex;
-        justify-content: center;
-      }
-    </style>
   </head>
   <body>
     <div class="search">
@@ -99,83 +41,5 @@
     </div>
 
     <script src="app.js"></script>
-    <script>
-      let map; // Declare map outside the function to keep track of the map instance
-
-      getWeather = () => {
-        var unos = document.getElementById("search");
-        var inputValue = String(unos.value);
-        const mapElement = document.getElementById("map");
-
-        const city = document.getElementById("city");
-        const temperature = document.getElementById("temp");
-        const weatherDescription = document.getElementById("description");
-        const windSpeed = document.getElementById("wind");
-        const pressureValue = document.getElementById("pressure");
-        const humidityValue = document.getElementById("humidity");
-        const errorDiv = document.getElementById("error");
-
-        const url = `http://api.openweathermap.org/data/2.5/weather?q=${inputValue},CRO&APPID=21b14aefd2b979687909f9afa337dd47&units=metric`;
-
-        fetch(url)
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error("Invalid input. Please enter a valid city name.");
-            }
-            return response.json();
-          })
-          .catch(function (error) {
-            city.innerHTML = "";
-            temperature.innerHTML = "";
-            weatherDescription.innerHTML = "";
-            windSpeed.innerHTML = "";
-            pressureValue.innerHTML = "";
-            humidityValue.innerHTML = "";
-            errorDiv.innerHTML = error.message; // Display error message
-            mapElement.style.display = "none";
-            console.log(error);
-          });
-
-        async function logWeather() {
-          const response = await fetch(
-            `http://api.openweathermap.org/data/2.5/weather?q=${inputValue}&APPID=21b14aefd2b979687909f9afa337dd47&units=metric`
-          );
-          const info = await response.json();
-
-          var name = info.name;
-          var temp = info.main.temp;
-          var description = info.weather[0].description;
-          var wind = info.wind.speed;
-          var pressure = info.main.pressure;
-          var humidity = info.main.humidity;
-          var longitude = info.coord.lon;
-          var latitude = info.coord.lat;
-
-          city.innerHTML = "City: " + name;
-          temperature.innerHTML = "Temperature: " + temp + "°C";
-          weatherDescription.innerHTML = "Description: " + description;
-          windSpeed.innerHTML = "Wind speed: " + wind + " m/s";
-          pressureValue.innerHTML = " Pressure: " + pressure + " Pa";
-          humidityValue.innerHTML = "Humidity: " + humidity + " g/m3";
-          errorDiv.innerHTML = "";
-          mapElement.style.display = "flex";
-
-          //map with latitude and longitude from a town user inputed
-          if (!map) {
-            map = L.map("map", { attributionControl: false }).setView([latitude, longitude], 14);
-
-            const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-              maxZoom: 19,
-              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-            }).addTo(map);
-          } else {
-            map.setView([latitude, longitude], 14);
-          }
-
-          const marker = L.marker([latitude, longitude]).addTo(map).openPopup();
-        }
-        logWeather();
-      };
-    </script>
   </body>
 </html>
