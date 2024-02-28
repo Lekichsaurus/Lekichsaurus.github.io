@@ -23,13 +23,9 @@ const bodyBackground = function (color) {
 
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
-  console.log(guess, typeof guess);
   // When there is no input
-  if (!guess) {
-    // document.querySelector('.message').textContent = '⛔ No Number!'
-    displayMessage("⛔ No Number!");
-  } else if (guess < 0 && guess > 20) {
-    displayMessage("Invalid input!");
+  if (!guess || guess < 1 || guess > 20) {
+    displayMessage("⛔ Invalid input! Enter a number between 1 and 20.");
     // When player wins
   } else if (guess === number) {
     displayMessage("🎉 Correct Number!");
