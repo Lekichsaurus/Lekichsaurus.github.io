@@ -21,21 +21,66 @@
     </style>
   </head>
   <body>
+    <nav class="navbar mainNav bg-dark navbar-expand-sm navbar-dark w-50 fixed-top" aria-label="Third navbar example">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarsExample03"
+          aria-controls="navbarsExample03"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+          <ul class="navbar-nav me-auto mb-2 mb-sm-0 fs-4 fw-semibold">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">About me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#contact">Kontakt</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <div class="container-fluid bg-dark d-flex justify-content-around">
       <div class="d-flex align-items-center w-50">
-        <h1 class="text-light fs-1 fw-bold">Marko Bolanča - NEET Academy <br />Full stack Developer in training</h1>
+        <h1 class="text-light fs-1 fw-bold" id="introduction">Marko Bolanča - NEET Academy <br />Full stack Developer in training</h1>
       </div>
       <div class="d-flex justify-content-end w-25 h-100 my-5">
-        <img class="id w-100" src="images/img.jpg" alt="" />
+        <img class="id w-100" src="images/img.jpg" alt="Marko Bolanča's photo" />
       </div>
     </div>
+    <div id="portfolio" class="p-2"></div>
 
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
       <div class="row justify-content-around">
         <div class="col-md-5 m-3 text-center">
           <a href="izrada-web-stranice-web-shop-Lekichsaurus/index.html">
             <img class="webshopImage rounded" src="images/webshop.PNG" alt="" />
           </a>
+        </div>
+        <div class="col-md-5 m-3">
+          <p>
+            A stylish webshop developed with HTML, CSS, and JavaScript, incorporating a personal touch to ensure a user-friendly and visually
+            appealing online shopping experience.
+          </p>
+        </div>
+      </div>
+
+      <div class="row justify-content-around">
+        <div class="col-md-5 m-3 text-center">
+          <p>
+            Straightforward ToDo project developed using HTML, CSS, and JavaScript, providing a minimalist and intuitive platform for managing tasks
+            efficiently.
+          </p>
         </div>
         <div class="col-md-5 m-3">
           <a href="ToDo/index.html">
@@ -51,6 +96,21 @@
           </a>
         </div>
         <div class="col-md-5 m-3">
+          <p>
+            A sleek weather app utilizing API integration, offering real-time weather updates and forecasts for a seamless and informative user
+            experience.
+          </p>
+        </div>
+      </div>
+
+      <div class="row justify-content-around">
+        <div class="col-md-5 m-3">
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quaerat rem iste eius obcaecati aliquam voluptatum, facilis blanditiis
+            cumque inventore perferendis magni odio, quia non? Aliquid culpa corporis in est!
+          </p>
+        </div>
+        <div class="col-md-5 m-3">
           <a href="./Guess the Number/index.html">
             <img class="webshopImage rounded" src="images/guess.PNG" alt="" />
           </a>
@@ -64,16 +124,31 @@
           </a>
         </div>
         <div class="col-md-5 m-3">
-          <a href="#">
-            <img class="webshopImage rounded" src="" alt="" />
-          </a>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quaerat rem iste eius obcaecati aliquam voluptatum, facilis blanditiis
+            cumque inventore perferendis magni odio, quia non? Aliquid culpa corporis in est!
+          </p>
         </div>
       </div>
     </div>
+
+    <div class="container-fluid" id="contact"></div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"></script>
+
+    <script>
+      function adjustWidthOnScroll() {
+        var scrollDistance = window.pageYOffset || document.documentElement.scrollTop;
+        var mainNav = document.querySelector(".mainNav");
+
+        mainNav.classList.toggle("w-100", scrollDistance >= 400);
+        mainNav.classList.toggle("w-50", scrollDistance < 400);
+      }
+
+      window.addEventListener("scroll", adjustWidthOnScroll);
+    </script>
   </body>
 </html>
