@@ -1,0 +1,70 @@
+.App {
+  text-align: center;
+}
+
+.header {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.accommodations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.accommodation-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.accommodation-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.details {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  border-radius: 8px;
+  color: black;
+}
+
+.accommodation-card {
+  /* Dodajte stilizaciju prema vašim potrebama */
+  cursor: pointer;
+  /* Ostale stilizacijske opcije */
+}
+
+.amenities-content {
+  height: 20%;
+}
